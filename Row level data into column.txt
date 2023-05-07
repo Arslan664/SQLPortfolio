@@ -1,0 +1,28 @@
+Row level data into column level data in mysql 
+we can also used pivot and unpivot operator to convert row level to column level in ms sql server
+
+
+
+
+CREATE TABLE sales (
+  id INT,
+  product VARCHAR(50),
+  year INT,
+  revenue DECIMAL(10,2)
+);
+
+INSERT INTO sales VALUES
+  (1, 'Product A', 2019, 1000.00),
+  (2, 'Product B', 2019, 2000.00),
+  (3, 'Product A', 2020, 1500.00),
+  (4, 'Product B', 2020, 2500.00),
+  (5, 'Product C', 2020, 3000.00);
+
+select * from sales;
+
+SELECT
+  product,
+  MAX(CASE WHEN year = 2019 THEN revenue ELSE NULL END) AS revenue_2019,
+  MAX(CASE WHEN year = 2020 THEN revenue ELSE NULL END) AS revenue_2020
+FROM sales
+GROUP BY product;
