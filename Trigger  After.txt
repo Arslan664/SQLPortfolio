@@ -1,0 +1,11 @@
+DELIMITER //
+CREATE TRIGGER Trig_financials
+BEFORE INSERT ON financials
+FOR EACH ROW
+BEGIN
+   IF NEW.revenue > 11690.00 THEN
+       SIGNAL SQLSTATE '45000'SET MESSAGE_TEXT = 'This revenue is not allowed';
+   END IF;
+END //
+DELIMITER ;
+insert into financials values(999,899,11660,'millions','usd');
