@@ -1,0 +1,39 @@
+
+@@@@@@@@@@@@@@@@@@@@@first solution@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+select movie_id,revenue from financials
+order by revenue desc
+limit 1,1;
+
+
+
+@@@@@@@@@@@@@@@@@@@@@2nd solution@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+select max(revenue) from financials where revenue not in(
+select max(revenue) from financials
+order by revenue desc);
+
+
+@@@@@@@@@@@@@@@@@@@@@3rd solution with cte table@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+with second_highest_revenue as
+(select revenue from financials
+order by revenue desc 
+limit 2)
+select  revenue from second_highest_revenue order by revenue asc
+limit 1;
+
+@@@@@@@@@@@@@@@@@@@@@ 4th  solution with window function @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+select * from financials;
+select revenue from(
+select *,
+row_number() over(order by revenue desc) as rn from financials
+)x
+where x.rn=2;
+
+
+
+
+
