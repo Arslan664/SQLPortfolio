@@ -1,0 +1,139 @@
+
+select * from employee;
+select * from department;
+select * from manager;
+select * from projects;
+
+-- Inner Join
+select e.emp_name, d.dept_name
+from employee e
+join department d on e.dept_id = d.dept_id;
+
+-- Left Join
+select e.emp_name, d.dept_name
+from employee e
+left join department d on e.dept_id = d.dept_id;
+
+-- Right Join
+select e.emp_name, d.dept_name
+from employee e
+right join department d on e.dept_id = d.dept_id;
+
+-- Multiple joins 1
+select e.emp_name, d.dept_name, m.manager_name
+from employee e
+right join department d on e.dept_id = d.dept_id -- returns on Manoj, Rahul, Michael and James
+join manager m on m.manager_id = e.manager_id; -- Hence returns on the managers of above 4 employees
+
+-- Multiple joins 2
+select e.emp_name, d.dept_name, m.manager_name
+from employee e
+right join department d on e.dept_id = d.dept_id -- returns on Manoj, Rahul, Michael and James
+left join manager m on m.manager_id = e.manager_id;
+
+-- Multiple joins 3
+select e.emp_name, d.dept_name, m.manager_name
+from employee e
+right join department d on e.dept_id = d.dept_id -- returns on Manoj, Rahul, Michael and James
+right join manager m on m.manager_id = e.manager_id;
+
+-- Multiple joins 4
+select e.emp_name, d.dept_name, m.manager_name, p.project_name
+from employee e
+right join department d on e.dept_id = d.dept_id -- returns on Manoj, Rahul, Michael and James
+right join manager m on m.manager_id = e.manager_id
+inner join projects p on p.team_member_id = m.manager_id;
+
+
+
+			--Some Pratical Example--
+
+-- fetch emp name, their manager who are not working on any project.
+
+
+select e.emp_name, m.manager_name
+from employee e
+join manager m on m.manager_id = e.manager_id
+where not exists (select 1 from projects p where p.team_member_id = e.emp_id);
+
+
+
+-- Fetch details of ALL emp, their manager, their department and the projects they work on.
+
+
+select e.emp_name, d.dept_name, m.manager_name, p.project_name
+from employee e
+left join department d on d.dept_id = e.dept_id
+join manager m on m.manager_id = e.manager_id
+left JOIN projects p on p.team_member_id = e.emp_id;
+
+
+-- Fetch details of ALL emp and ALL manager, their department and the projects they work on.
+
+
+select e.emp_name, d.dept_name, m.manager_name, p.project_name
+from employee e
+left join department d on d.dept_id = e.dept_id
+right join manager m on m.manager_id = e.manager_id
+left join projects p on p.team_member_id = e.emp_id;
+
+
+-- Write a query to fetch ALL the department and the employees under these departments.
+
+
+SELECT e.emp_name, d.dept_name
+FROM employee e
+RIGHT JOIN department d ON e.dept_id = d.dept_id;
+
+
+
+-- Write a query to fetch the employee name and their corresponding department name.
+
+-- Make sure to include all the employees and the departments.
+
+
+SELECT e.emp_name, d.dept_name
+FROM employee e
+FULL JOIN department d ON e.dept_id = d.dept_id;
+
+
+				-- CROSS JOIN --
+
+
+SELECT e.emp_name, d.dept_name
+FROM employee e
+CROSS JOIN department d;
+
+
+-- Write a query to fetch the employee name and their corresponding department name.
+-- Also make sure to display the company name and the company location correspodning to each employee.
+
+
+				-- NATURAL JOIN--
+
+SELECT *
+FROM employee e
+NATURAL JOIN department d;
+
+-- Altering the dept_id column name to see how Natural Join acts when there are no common column names in both tables.
+--alter table department rename column dept_id to department_id
+--alter table department rename column department_id to dept_id;
+
+
+				-- SELF JOIN --
+
+select child.name as child_name
+, child.age as child_age
+, parent.name as parent_name
+, parent.age as parent_age
+from family as child
+join family as parent on parent.member_id = child.parent_id;
+
+
+select child.name as child_name
+, child.age as child_age
+, parent.name as parent_name
+, parent.age as parent_age
+from family as child
+left join family as parent on parent.member_id = child.parent_id;
+
