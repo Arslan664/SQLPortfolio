@@ -1,8 +1,17 @@
 # SQLPortfolio
-Welcome to my SQL repository on GitHub! Here, you will find a collection of SQL files that cover the basics of SQL queries, as well as more advanced topics such as SQL joins, case statements, and subqueries.
+Welcome to my SQL repository on GitHub! This repository contains multiple SQL files that cover a wide range of SQL topics, from basic SQL queries to more advanced features like SQL window functions, SQL views, SQL triggers, SQL pivot and unpivot, and challenge code files.
 
-If you are new to SQL, these files will provide you with a solid foundation on which to build your knowledge of this powerful and widely used programming language. For more experienced users, these files offer a refresher on the basics, and provide an opportunity to deepen your understanding of some of the more complex features of SQL.
+If you're just starting out with SQL, these files provide a solid foundation to build your knowledge of this popular programming language. For more experienced users, these files can serve as a useful reference or a way to brush up on SQL basics.
 
-In this repository, you will find detailed explanations of each topic, along with practical examples and sample queries to help you get started. Whether you are a student, a professional developer, or just someone who is interested in learning more about SQL, these files are a valuable resource that you won't want to miss.
+Here's an overview of the files included in this repository:
 
-So, take a look around, download the files, and start exploring the world of SQL! I hope you find these resources helpful, and I look forward to hearing your feedback and suggestions for future updates.
+basic-sql-queries.sql: Covers the basics of SQL queries, including selecting data, filtering data, and sorting data.
+sql-joins.sql: Explores the different types of SQL joins, such as inner join, left join, and right join.
+sql-case-statements.sql: Discusses the SQL case statement and how it can be used to transform data.
+sql-subqueries.sql: Introduces the concept of subqueries in SQL and demonstrates how they can be used to query data from multiple tables.
+sql-window-functions.sql: Introduces the concept of SQL window functions and demonstrates how they can be used to perform complex calculations on a subset of data.
+sql-views.sql: Covers SQL views and how they can be used to simplify complex queries and improve performance.
+sql-triggers.sql: Discusses SQL triggers and how they can be used to enforce data integrity and automate tasks.
+sql-pivot-unpivot.sql: Demonstrates how SQL pivot and unpivot can be used to transform data from rows to columns and vice versa.
+challenge-code-1.sql: Contains a challenge problem to test your SQL skills and knowledge.
+challenge-code-2.sql: Another challenge problem to test your SQL skills and knowledge
